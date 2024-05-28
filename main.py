@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 class SparseMatrix:
     def __init__(self, matrixFilePath=None, numRows=None, numCols=None):
         self.matrix = {}
@@ -69,6 +70,10 @@ class SparseMatrix:
             result += f"({row}, {col}, {value})\n"
         return result
 
+    def to_file(self, file_path):
+        with open(file_path, 'w') as file:
+            file.write(str(self))
+
 
 def main():
     import sys
@@ -100,9 +105,11 @@ def main():
         print("Unknown operation. Please enter 1, 2, or 3.")
         return
 
-    print(result)
+    result.to_file("results.txt")
+    print("The result has been written to results.txt")
 
 
 if __name__ == "__main__":
     main()
+
 
